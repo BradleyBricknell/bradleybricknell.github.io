@@ -1,0 +1,271 @@
+<html>
+   <body>
+<h1>Welcome to Quill! </h1>
+
+<p>This guide will help you get setup with the software packages and database management systems that we utilise here at Quill in order to develop for our software products such as Interactive 3.
+
+   <p><i>So let's get started!<i></p>
+   </br>
+      <h3>IIS</h3>
+      <p><i>Before we can being we just need to make sure that the <i>IIS (Internet Information Service)</i> is running. Navigate to <a href="http://localhost">localhost</a> where you should see the Windows IIS splash screen. If not they you can walk through <a href ="http://www.howtogeek.com/112455/how-to-install-iis-8-on-windows-8/">this </a> guide to set that up.<i></p>
+</br>    
+	<h3>License Invitations</h3>
+      <p>Ask Richard Salt to invite you to the following:</p>
+      <li> MyGet</li>
+      <li> ReSharper</li>
+      <li> Visual Studio MSDN</li>
+      <p> You will receive these licences via your company email. Make sure you have access to these as you will need these during the setup process so ask Richard ASAP so that you have everything you need once you get to that section. </p>
+ </br>
+ <h1>Anti-Virus</h1>
+
+<p>Before we start installing packages and getting interactive to work we should make sure that the computer you are working from is setup and secure.</p>
+
+<p>At Quill we use the Anti-Virus known as ESET</p>
+
+<p>Firstly check that the anti-virus has already been installed by searching for ESET in the start menu. If it is already installed then skip this section and move onto <a href="#building-interactive">Building Interactive</a>
+
+<p>IF ESET is not set-up then navigate <a href="http://www.eset.co.uk/Download/Software</p>roduct/EAVB">here </a>to the ESET downloads page and follow the installation instructions. Credentials and License information can be found in <samp>\\nas-test\Public\SoftwareLicenses<samp> Under <samp>PasswordsAndLicenses.txt<samp></p>
+
+
+<img src="http://i.imgur.com/qrfbgw7.png"/>
+
+<p>Manually clone the Newbies repository by running the following command in command line</p>
+
+
+</br>
+<h1>Setting up the development tools</h1>
+
+<p>First step is to install <i>chocolatey<i> and install to download the programs you'll need for working with interactive 3.</p>
+
+<p>Start up CMD.exe (as Administrator) and run the following script to install chocolatey</p>
+
+<samp>@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</samp>
+
+<p>Next install we need to install git so we can clone the Newbies repository to access the scripts and the files relevant to this user guide. </p>
+
+<p>While with CMD open run <samp>choco install git<samp> to install Git onto the PC.</p>
+<p>To set up git you may have to input some global configurable variables. Simply use the commands while filing in your details for the parameters</p>
+<samp>
+git config --global user.name "Your Name"
+git config --global user.email “Your email”
+<samp>
+
+<p> Next clone the repository </p>
+
+<samp>git clone https://github.com/quillpinpoint/Newbies.git<samp>
+
+<p>Now we have access to the scripts which help us streamline the set-up process.</p>
+<p>The file we are looking for here is packages.config. This contains a list of software packages which we will need to use in the day-to-day duties of interactive 3. The programs includes:</p>
+<li> 7ZIP </li>
+<li> Notepad++ </li>
+<li> Erlang </li>
+<li> Fiddler4 </li>
+<li> nodejs </li>
+<li> Mongodb </li>
+<li> VS Code </li>
+<li> WinSCP </li>
+<li> Firefox </li>
+<li> Firebird </li>
+<li> Putty</li>
+<li> RabbitMQ</li>
+<li> MongoChef</li>
+
+<p>To run this script, simply open CMD (as Administrator) and navigate to the [InteractiveSetup]( InteractiveSetup) folder and run the following command</p>
+
+<samp>choco install packages.config<samp>
+
+<p>Chocolatey should then install the packages for you!</p>
+
+<p>There are two exceptions which cannot be installed via Chocolatey as there are not listed in the available packages. These are:</p>
+
+<li> Visual Studio Professional 2015</li>
+<li> IBExpert</li>
+
+</br>
+<h1> Installing IBExpert </h1>
+<p>If IBExpert is already installed, skip this section to <a href="#building-interactive">Building Interactive</a>. </p>
+<p>To download the licenced version of IBExpert navigate to <i>\\nas-test\Public\SoftwareLicenses\ibexpert\2015-2017-ibexpert company-license<i> on the local network, run setup<i>company.exe and follow the installation instructions.</p>
+
+<p>Once you have installation and ran IBExpert for the first time. You will be greeteed with the licence prompt similar to this:</p>
+
+<p>Enter the following:</p>
+
+<p>Username: <samp>richard.salt@quill.co.uk<samp> </p>
+
+<p>Password: <samp> \\nas-test\Public\SoftwareLicenses<samp> Under <samp>PasswordsAndLicenses.txt<samp></p>
+
+<p>then click on <i>Get Code<i></p>
+
+<p>OK out of the prompt that appears and click OK. </p>
+
+</br>
+<h1> Installing Visual Studio</h1>
+<p>If Visual Studio is already installed, skip this section to <a href="#building-interactive">Building Interactive</a></p>
+
+<p>To download the licenced version of IBExpert navigate to <i>\\nas-test\Public\SoftwareLicenses\Visual Studio 2015 MSDN<i> on the local network, in windows 10 you can simply double click the ISO for mount it and run vs<i>professional.exe</p>
+<p>to install and following the installation instructions.</p>
+
+<b>You may need to contract Richard Salt or Gareth Budden to set up an MSDN licence if one does not exist for you.</b> 
+
+<h2> Installing Resharper </h2>
+<p>If Resharper is already installed, skip this section to <a href="#building-interactive">Building Interactive</a>.</p>
+
+
+<p>Request an resharper licence via invitiation from Richard Salt or Gareth Budden.</p>
+ 
+<p>While you wait for the invitation to JetBeans naviagte to the [Resharper download page](https://www.jetbrains.com/resharper/download/) and download the latest version. <p>
+
+<p>Run the installer executable and follow instruction of installing Resharper.</p>
+
+<p>Once you have been invited and created your credentials for Resharper. Open Visual Studio and navigate </p>
+<p><i>Resharper -> Help -> License Information<i> to see the License Summary</p>
+
+<img src= "http://i.imgur.com/PQekPID.png"/> 
+
+
+<p> Click the <img src= "http://i.imgur.com/yWseQpJ.png"/> on the <samp>Use JB Account<samp> Row and enter the credentials you created via the invitiation.</p>
+
+<p>You should be logged in should be able to see your available licenses.</p>
+
+</br>
+<h1> Setting up Tenant and Security Databases</h1>
+
+<p>You will need to setup multiple databases for interactive to use via your localhost. We shall setup and configure these databases using <i>IBExpert<i> for the firebird databases and <i>Mongochef<i> for the mongo databases</p>
+</br>
+<h2>Firebird</h2>
+
+<h3>Tenant Database</h3>
+<p>First we must retreive the lastest backups from the test databases. </p>
+
+<p>Open WinSCP and create a new connection Session with the following details</p>
+
+<p>Hostname: <samp>192.168.10.19<samp></p>
+
+<p>Port <samp>22<samp> (Default)</p>
+
+</p>Username <samp>root<samp></p>
+
+<p>Password: Check <samp> \\nas-test\Public\SoftwareLicenses<samp> Under <samp>PasswordsAndLicenses.txt<samp></p>
+
+<p>It should look something like this      </p>
+
+<img src="http://i.imgur.com/zzMXf4H.png"/>
+
+<p>Click login </p>
+
+<p>Say 'Yes' To the certification request prompt.</p>
+
+<p>Navigate <samp>data<samp> -> <samp>live-backups<samp> -> <samp>772<samp> -> firebird  and copy the most recent 'fbk.gz' file to your local directory.</p>
+
+<p><i>We advise that you create a data folder in your directory to organise your different firebird and mongo databases into<i></p>
+
+<p>Using the file explorer navigate to your /data folder and extract the firebird backup database from the compressed file</p>
+
+
+<img src="http://i.imgur.com/TvclVmd.png"/>
+
+
+<p>Next we need to restore the database with into IBExpert from a backup to a working state.</p>
+
+<p>Open IBExpert and naviagte <samp>Services<samp> -> <samp>Restore Database<samp>.</p>
+
+<p>Below is an example of the appropriate configuration on how to setup the database, simply input the destination Database file and under filename point to the .FBK file</p>
+
+
+<img src="http://i.imgur.com/L8P2CKx.png"/>
+
+<p><i>At this point you may get prompted for the Database Login. Enter the following details</p>
+
+<p>Username <samp>SYSDBA<samp></p>
+
+<p>Password Check [here]( \\nas-test\Public\SoftwareLicenses) Under <samp>PasswordsAndLicenses.txt<samp></p>
+
+<p>Role <samp>Admin<samp></p>
+
+
+
+<p>Next we can register the database to IBExpert. To do this navigate <samp>Database<samp> - > <samp>Register Database<samp> to fill in the details like the example below. <i>Use the same username and password as the database restore process<i></p>
+
+<img src="http://i.imgur.com/2TRPZwd.png"/>
+
+<p>Click <samp>OK<samp> and then double click on the Database which can be found listed in the <samp>Database Explorer<samp> to establish the database connection.</p>
+
+<img src="http://i.imgur.com/or8Xbvj.png"/>
+
+
+</br>
+<h3>Security Database</h3>
+
+<p>The process of setting up the Security Database is more simply than the Tenant database because all you need to do is to register the database. No restoration required. </p>
+
+<p>Open up WinSCP and the connection session and navigate to the <samp>data<samp> directoy. Scrolling passed the folders you will see an .FDB named <samp>KODAMA<i>SECURITY.FDB<samp> with recent timestamp on the time changed. Copy this over to your data directory and register the database just like you registered the Tenant database.</p>
+
+</br>
+<h3> Security Configuration </h3>
+<p>The Kodama security database will some configuration changes in order for it to work on your local machine.</p>
+
+<p>Open up an SQL Editor in KODAMA<i>SECURITY (Shift+F12) and run the following SQL once you change the dbpath to the path of your tenant databse. </p>
+
+<samp>
+UPDATE CLIENTS
+SET DBSERVER = 'localhost',
+/* Example dbpath =  C:\Users\BradleyB\Documents\data\firebird\Tenant.FDB */
+DBPATH = 'Your tenant db dbpath'
+
+WHERE ID = '772' 
+</samp> 
+
+
+<h2> Mongo</h2>
+<p>Time to install the Tenant Mongo DB!</p>
+
+<p>Open WinSCP and navigate to <samp>data<samp> -> <samp>live-backups<samp> -> <samp>cross-tenant<samp> -> <samp>mongo<samp> and download the most recent backup to your data directory. Using 7zip to extract the <samp>.tgz<samp> to a  <samp>.tar<samp>. You then need to extract the <samp>.tar<samp> until you have the <samp>backup<samp> folder.</p>
+
+<p>Now open up the CMD (as Administrator) run the following command</p>
+
+<samp>SHELL
+mongorestore -d MongoTenant PATH<i>TO<i>JSON 
+<samp>
+
+<p><i>Example PATH-TO-JSON <samp>backup/temp/ORQA<i>System<samp><i></p>
+
+
+<p>Finally you can connect to the database by opening MongoChef and then navigating <samp>Connect<samp> -> <samp>New Connection<samp>.</p>
+
+<p>Give the connection an appropriate name and set the Server to <samp>localhost<samp> making sure it is active on port <samp>27017<samp>. You can test the connection to make sure it is set up correctly.</p>
+
+<p>Once you are happy with the settings click <samp>Connect<samp>.</p>
+
+
+<p>Your Mongochef explorer should like something like this</p>
+
+
+<img src="http://i.imgur.com/6ysAeCT.png"/>
+
+</br>
+<h1 id="building-interactive">Building Interactive</h1>
+<p>To retrieve the code base for Interactive all you have to do is to configure and run the interactiveRepositories.bat file by filling in your name and email address as the config parametres (example below) and change the file path if you would prefer a different location.</p>
+
+<img src="http://i.imgur.com/bQHpCj9.png"/>
+
+<p>You should have the repositories cloned and ready to build in visual studio one you set up [MyGet].</p>
+
+</br>
+<h1>MyGet</h1>
+
+<p>Once you have the MyGet invitation from Richard you can use the MyGet feed in order to retrieve the interactive NuGet projects. To this you will need to find the source URI for NuGet feed. To do this you will need to navigate to <samp>https://www.myget.org/Account/Login<samp> and use your gmail credentials to log in.</p>
+
+<p>Once you have logged in navigate to <samp>https://www.myget.org/feed</p>ackages/quillpinpoint<samp> then <samp>FEED DETAILS<samp>. You will require this Nuguet feed URL for the setup in visual studio. Copy the <i><b>NuGet V3<b> (no basic authentication)<i> if you are using Visual Studio 2015 or <b>NuGet V2<b> if you are using an older version.</p>
+
+<p>Open up visual studio and right click on the solution and <i>Manage NuGet packages for solution...<i>.</p>
+
+<p>Click the <img src="http://i.imgur.com/c51myl7.png"/> to manage the package sources and click the <img src="http://i.imgur.com/N4IoE97.png"/>. Use the URL from MyGet as the package source and give it an appropriate name. Visual Studio should then flag that packages need installing if set up correctly.</p>
+
+
+ 
+
+
+
+
+ </body>
+</html>
